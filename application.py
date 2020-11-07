@@ -1,8 +1,11 @@
 from flask import Flask
 
 # print a nice greeting.
-def say_hello(title = "Hello"):
-    return '<iframe src="https://en.wikipedia.org/wiki/%s" width="1200" height="500" frameborder="0"></iframe>\n' % title
+def show_wiki(title = "Hello"):
+    return '<iframe src="https://en.wikipedia.org/wiki/%s" width="2000" height="1500" frameborder="0"></iframe>\n' % title
+
+def show_google(title = "Hello"):
+    return '<iframe src="https://www.google.com/search?q=%s" width="2000" height="1500" frameborder="0"></iframe>\n' % title
 
 # some bits of text for the page.
 header_text = '''
@@ -21,11 +24,12 @@ application = Flask(__name__)
 application.add_url_rule('/', 'index', (lambda: header_text +
     say_hello() + instructions + footer_text))
 
-application.add_url_rule('/<title>', 'Wikipedia Search', (lambda title: header_text +
-    say_hello(title) + instructions + footer_text))
-# display a dashboard
-#application.add_url_rule('/d', 'dashboard', (lambda:
-#    header_text + dashboard_frame + home_link + footer_text))
+application.add_url_rule('/wiki-<title>', 'Wikipedia Search', (lambda title: header_text +
+    show_wiki(title) + instructions + footer_text))
+
+application.add_url_rule('/google-<title>', 'Google Search', (lambda title: header_text +
+    show_google(title) + instructions + footer_text))
+
 
 # run the app.
 if __name__ == "__main__":
