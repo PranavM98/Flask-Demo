@@ -12,7 +12,7 @@ header_text = '''
     <html>\n<head> <title>EB Flask Test</title> </head>\n<body>'''
 instructions = '''
     <p><em>Hint</em>: This is a RESTful web service! With changes made. Append a title
-    to the URL (for example: <code>/Thelonious</code>) to open(display) its wikipedia page</p>\n'''
+    to the URL (for example: <code>/Thelonious</code>) to open(display). If Wiki then type "wiki-search_term", if Google "google-search_term. Only single words are allowed.'''
 #dashboard_frame = '''<iframe src="https://en.wikipedia.org/wiki/Halloween"
 home_link = '<p><a href="/">Back</a></p>\n'
 footer_text = '</body>\n</html>'
@@ -21,8 +21,7 @@ footer_text = '</body>\n</html>'
 application = Flask(__name__)
 
 # add a rule for the index page.
-application.add_url_rule('/', 'index', (lambda: header_text +
-    say_hello() + instructions + footer_text))
+application.add_url_rule('/', 'index', (lambda: header_text + instructions + footer_text))
 
 application.add_url_rule('/wiki-<title>', 'Wikipedia Search', (lambda title: header_text +
     show_wiki(title) + instructions + footer_text))
