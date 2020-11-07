@@ -4,15 +4,16 @@ from flask import Flask
 def show_wiki(title = "Hello"):
     return '<iframe src="https://en.wikipedia.org/wiki/%s" width="2000" height="1500" frameborder="0"></iframe>\n' % title
 
-def show_google(title = "Hello"):
-    return '<iframe src="https://www.google.com/search?q=%s" width="2000" height="1500" frameborder="0"></iframe>\n' % title
+def show_wolfram(title = "Hello"):
+    return '<iframe src="https://www.wolframalpha.com/input/?i=%s" width="2000" height="1500" frameborder="0"></iframe>\n' % title
+
 
 # some bits of text for the page.
 header_text = '''
     <html>\n<head> <title>EB Flask Test</title> </head>\n<body>'''
 instructions = '''
     <p><em>Hint</em>: This is a RESTful web service! With changes made. Append a title
-    to the URL (for example: <code>/Thelonious</code>) to open(display). If Wiki then type "wiki-search_term", if Google "google-search_term. Only single words are allowed.'''
+    to the URL (for example: <code>/Thelonious</code>) to open(display). If Wiki then type "wiki-search_term", if Wolfram "wolfram-search_term. Only single words are allowed.'''
 #dashboard_frame = '''<iframe src="https://en.wikipedia.org/wiki/Halloween"
 home_link = '<p><a href="/">Back</a></p>\n'
 footer_text = '</body>\n</html>'
@@ -26,8 +27,8 @@ application.add_url_rule('/', 'index', (lambda: header_text + instructions + foo
 application.add_url_rule('/wiki-<title>', 'Wikipedia Search', (lambda title: header_text +
     show_wiki(title) + instructions + footer_text))
 
-application.add_url_rule('/google-<title>', 'Google Search', (lambda title: header_text +
-    show_google(title) + instructions + footer_text))
+application.add_url_rule('/wolfram-<title>', 'Wolfram Search', (lambda title: header_text +
+    show_wolfram(title) + instructions + footer_text))
 
 
 # run the app.
