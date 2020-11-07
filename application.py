@@ -4,8 +4,8 @@ from flask import Flask
 def show_wiki(title = "Hello"):
     return '<iframe src="https://en.wikipedia.org/wiki/%s" width="2000" height="1500" frameborder="0"></iframe>\n' % title
 
-#def show_wolfram(title = "Hello"):
-#    return '<iframe src="https://www.wolframalpha.com/input/?i=%s" width="2000" height="1500" frameborder="0"></iframe>\n' % title
+def show_wolfram(title = "Hello"):
+    return '<iframe src="https://www.wolframalpha.com/input/?i=%s" width="2000" height="1500" frameborder="0"></iframe>\n' % title
 
 
 # some bits of text for the page.
@@ -27,8 +27,8 @@ application.add_url_rule('/', 'index', (lambda: header_text + instructions + foo
 application.add_url_rule('/wiki-<title>', 'Wikipedia Search', (lambda title: header_text +
     show_wiki(title) + instructions + footer_text))
 
-#application.add_url_rule('/wolfram-<title>', 'Wolfram Search', (lambda title: header_text +
-#    show_wolfram(title) + instructions + footer_text))
+application.add_url_rule('/wolfram-<title>', 'Wolfram Search', (lambda title: header_text +
+    show_wolfram(title) + instructions + footer_text))
 
 
 # run the app.
