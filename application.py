@@ -8,7 +8,7 @@ def say_hello(title = "Hello"):
 header_text = '''
     <html>\n<head> <title>EB Flask Test</title> </head>\n<body>'''
 instructions = '''
-    <p><em>Hint</em>: This is a RESTful web service! Append a title
+    <p><em>Hint</em>: This is a RESTful web service! With changes made. Append a title
     to the URL (for example: <code>/Thelonious</code>) to open(display) its wikipedia page</p>\n'''
 #dashboard_frame = '''<iframe src="https://en.wikipedia.org/wiki/Halloween"
 home_link = '<p><a href="/">Back</a></p>\n'
